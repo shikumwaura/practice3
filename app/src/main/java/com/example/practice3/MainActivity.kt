@@ -1,5 +1,6 @@
 package com.example.practice3
 
+import android.content.Intent
 import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,8 +29,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.motionEventSpy
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,9 +57,10 @@ fun Home() {
     LazyColumn {
         item {
             Column(
-                horizontalAlignment = Alignment.Start,
+//                horizontalAlignment = Alignment.Start,
                 modifier = Modifier
                     .fillMaxHeight()
+
 
             ) {
                 Text(
@@ -79,8 +85,13 @@ fun Home() {
 
 
                 Row {
+                    val kk = LocalContext.current
                     OutlinedCard(
                         modifier = Modifier
+                            .clickable {
+                                kk.startActivity(Intent(kk,MainActivity::class.java))
+
+                            }
                             .height(100.dp)
                             .width(70.dp)
                             .padding(5.dp)
@@ -92,13 +103,19 @@ fun Home() {
                             painter = painterResource(id = R.drawable.ho),
                             contentDescription = "hotel",
                             modifier = Modifier
-                                .size(33.dp)
-                                .padding(2.dp)
+//                                .size(34.dp)
+                                .height(40.dp)
+                                .padding(3.dp)
+//                                .padding(2.dp)
 
                         )
                         Spacer(modifier = Modifier.height(7.dp))
 
-                        Text("Hotel")
+                        Text("Hotel",
+                            fontSize = 10.sp,
+                            modifier = Modifier
+                                .padding(12.dp)
+                        )
                     }
 
 
@@ -106,35 +123,56 @@ fun Home() {
 
                     OutlinedCard(
                         modifier = Modifier
+                            .clickable {
+                                kk.startActivity(Intent(kk,MainActivity::class.java))
+                            }
                             .height(100.dp)
                             .width(70.dp)
                             .padding(5.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.flig),
-                            contentDescription = "hotel",
+                            painter = painterResource(id = R.drawable.fli),
+                            contentDescription = "flight",
                             modifier = Modifier
-                                .size(28.dp)
+                                .height(43.dp)
+                                .size(50.dp)
+                                .padding(5.dp)
+                                .padding(4.dp)
                         )
                         Spacer(modifier = Modifier.height(12.dp))
-                        Text("Flight")
+                        Text("Flight",
+                            fontSize = 10.sp,
 
+                            modifier = Modifier
+                                .padding(3.dp)
+                                .padding(1.dp)
+
+
+                                 )
 
                     }
 
                     OutlinedCard(
                         modifier = Modifier
+                            .clickable {
+                                kk.startActivity(Intent(kk,MainActivity::class.java))
+                            }
                             .height(100.dp)
                             .width(70.dp)
                             .padding(5.dp)
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.pl),
-                            contentDescription = "hotel",
+                            contentDescription = "place",
                             modifier = Modifier
+                                .height(40.dp)
                                 .size(43.dp)
                         )
-                        Text("Place")
+                        Text("Place",
+                            fontSize = 10.sp,
+                            modifier = Modifier
+                                .padding(16.dp)
+                        )
 
                     }
 
@@ -143,6 +181,9 @@ fun Home() {
 
                     OutlinedCard(
                         modifier = Modifier
+                            .clickable {
+                                kk.startActivity(Intent(kk,MainActivity::class.java))
+                            }
                             .height(100.dp)
                             .width(70.dp)
                             .padding(5.dp)
@@ -150,11 +191,16 @@ fun Home() {
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.fo),
-                            contentDescription = "hotel",
+                            contentDescription = "food",
                             modifier = Modifier
+                                .height(40.dp)
                                 .size(43.dp)
                         )
-                        Text("Food")
+                        Text("Food",
+                            fontSize = 10.sp,
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .padding(16.dp))
 
                     }
 
